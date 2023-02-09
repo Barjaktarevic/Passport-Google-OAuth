@@ -1,0 +1,26 @@
+p {
+    margin: 10px 0 !important;
+}
+
+.login-container {
+    width: 400px;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.edit-btn {
+    scale: 150%;
+    cursor: pointer;
+    margin-left: 2vmin;
+    margin-top: 1vmin;
+    transition: 100ms ease-in;
+}
+
+.edit-btn:hover {
+    color: orange;
+}
+
+.btn-float {
+    float: left;
+    margin-right: 10px;
+}

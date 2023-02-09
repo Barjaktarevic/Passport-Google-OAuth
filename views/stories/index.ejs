@@ -1,0 +1,33 @@
+<%- include('../partials/header') %> 
+
+<div class="container">
+<h1>Stories</h1>
+<div class="row">  
+    <% stories && stories.forEach(story => { %>
+        <div class="col s12 m4">
+            <div class="card">
+                <div class="card-image">
+                    <% if (story.user.equals(user)) {  %>
+                       <a href="/stories/edit/<%=story._id%>"><i class="fa-regular fa-pen-to-square edit-btn"></i></a>
+                    <% } %>
+                </div>
+                <div class="card-content center-align">
+                    <h5> <%= story.title %>  </h5>
+                    <p> <%- story.body.substring(0, 200) %>...</p>
+                    <br>
+                    <div class="chip">
+                        <img src=<%=story.user.image%>>
+                        <a href="/stories/user/<%=story.user._id%>"><%=story.user.displayName%></a>
+                    </div>
+                </div>
+
+                <div class="card-action center-align">
+                    <a href="/stories/<%= story._id %>" class="btn grey">Read More</a>
+                </div>
+            </div>
+        </div>
+    <%  }) %> 
+</div>
+</div>
+
+<%- include('../partials/footer') %> 

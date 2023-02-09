@@ -1,0 +1,49 @@
+<%- include('./partials/header') %> 
+<%- include('./partials/navbar') %> 
+
+<%- include('./partials/addButton') %> 
+
+<div class="container">
+<h6>Dashboard</h6>
+<h3>Welcome <%=name%>  </h3>
+<p>Here are all your stories:</p>
+
+<% if (stories.length) { %> 
+    <table class='striped'>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% stories.forEach(story => { %>
+                <tr>
+                    <td><a href="/stories/<%=story._id%> "></a><%=story.title%></td>
+                    <td><%=story.createdAt.toString().substring(0, 21)%></td>
+                    <td><span class="dash-status"> <%= story.status %> </span></td>
+                    <td>
+                        <a href="/stories/edit<%=story._id%>" class="btn btn-float">
+                            <i class="fas fa-edit"></i>
+                        </a>
+
+                        <form action="/stories/<%=story._id%>?_method=DELETE" method="POST" id="delete-form">
+                            <button type="submit" class="btn red">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            <%  }) %> 
+        </tbody>
+    </table>
+<% } else { %> 
+    <p>You have not created any stories. </p>
+<% } %> 
+
+</div>
+
+
+<%- include('./partials/footer') %> 
